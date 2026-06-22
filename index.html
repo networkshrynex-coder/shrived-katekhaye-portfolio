@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrived Katekhaye 🌾 | Agriculture's Greatest Visionary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #00ccff;
+            --accent: #ff6b00;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --card-bg: rgba(255,255,255,0.03);
+            --glow-green: 0 0 30px rgba(0,255,136,0.3);
+            --glow-blue: 0 0 30px rgba(0,204,255,0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* ANIMATED BACKGROUND */
+        #particles-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+        .orb1 { width: 600px; height: 600px; background: var(--primary); top: -200px; left: -200px; }
+        .orb2 { width: 500px; height: 500px; background: var(--secondary); bottom: -200px; right: -200px; animation-delay: -7s; }
+        .orb3 { width: 400px; height: 400px; background: var(--accent); top: 50%; left: 50%; animation-delay: -14s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10,10,15,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,255,136,0.1);
+            transition: all 0.3s;
+        }
+        nav.scrolled { padding: 0.6rem 2rem; background: rgba(10,10,15,0.95); }
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .hero-content { text-align: center; max-width: 900px; }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(0,255,136,0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            animation: pulse-border 3s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.2); }
+            50% { box-shadow: 0 0 20px 5px rgba(0,255,136,0.1); }
+        }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 .line1 { display: block; color: #fff; }
+        .hero h1 .line2 {
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        .hero-subtitle strong { color: var(--primary); font-weight: 700; }
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), #00cc66);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: var(--glow-green);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(0,255,136,0.5); }
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid rgba(0,255,136,0.3);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--primary); background: rgba(0,255,136,0.05); }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+        }
+        .scroll-indicator span {
+            display: block;
+            width: 20px; height: 20px;
+            border-right: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+            transform: rotate(45deg);
+            opacity: 0.5;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* SECTIONS */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-tag {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+        }
+        .section-title .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .about-image .avatar {
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            position: relative;
+            animation: avatar-glow 4s ease-in-out infinite;
+        }
+        @keyframes avatar-glow {
+            0%, 100% { box-shadow: 0 0 40px rgba(0,255,136,0.3); }
+            50% { box-shadow: 0 0 80px rgba(0,204,255,0.4); }
+        }
+        .about-image .avatar::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            z-index: -1;
+            animation: spin 6s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .about-text h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .about-text p {
+            color: #999;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-card:hover {
+            border-color: rgba(0,255,136,0.2);
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .timeline-item:hover {
+            border-color: rgba(0,255,136,0.2);
+            transform: translateX(10px);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.4rem; top: 2.5rem;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 20px rgba(0,255,136,0.5);
+        }
+        .timeline-year {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 0.5rem 0;
+        }
+        .timeline-desc {
+            color: #888;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .skill-card:hover::before { transform: scaleX(1); }
+        .skill-card:hover {
+            border-color: rgba(0,255,136,0.15);
+            transform: translateY(-5px);
+        }
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .skill-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .skill-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        .skill-bar {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 1.5s ease;
+            width: 0;
+        }
+        .skill-card p { color: #777; font-size: 0.9rem; margin-top: 0.5rem; }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .project-card:hover {
+            border-color: rgba(0,255,136,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .project-visual {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-visual.p1 { background: linear-gradient(135deg, #0a2e1a, #1a4a2a); }
+        .project-visual.p2 { background: linear-gradient(135deg, #0a1a2e, #1a2a4a); }
+        .project-visual.p3 { background: linear-gradient(135deg, #2e1a0a, #4a2a1a); }
+        .project-visual.p4 { background: linear-gradient(135deg, #1a0a2e, #2a1a4a); }
+        .project-body { padding: 2rem; }
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .project-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(0,255,136,0.08);
+            border: 1px solid rgba(0,255,136,0.15);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .project-desc {
+            color: #888;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .achievement-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: all 0.3s;
+        }
+        .achievement-card:hover {
+            border-color: rgba(0,255,136,0.2);
+            transform: translateY(-5px);
+        }
+        .achievement-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        .achievement-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .achievement-desc {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6rem;
+            color: rgba(0,255,136,0.08);
+            position: absolute;
+            top: 0.5rem; right: 1.5rem;
+            line-height: 1;
+        }
+        .testimonial-text {
+            color: #bbb;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .testimonial-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .testimonial-name {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .testimonial-role {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+        .contact-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .contact-card p {
+            color: #888;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0,255,136,0.05);
+            border: 1px solid rgba(0,255,136,0.15);
+            border-radius: 50px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .contact-link:hover {
+            background: rgba(0,255,136,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            font-size: 0.9rem;
+        }
+        footer .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); }
+            .nav-links { display: none; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--darker); }
+        ::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0,255,136,0.5); }
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <canvas id="particles-canvas"></canvas>
+    <div class="gradient-orb orb1"></div>
+    <div class="gradient-orb orb2"></div>
+    <div class="gradient-orb orb3"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-logo">SK</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🌾 Redefining Agriculture Since Birth</div>
+            <h1>
+                <span class="line1">Shrived Katekhaye</span>
+                <span class="line2">Agriculture's Greatest Visionary</span>
+            </h1>
+            <p class="hero-subtitle">
+                A <strong>once-in-a-generation mind</strong> who decoded the language of soil at age 12, 
+                published his first research paper at 15, and by 20 was advising <strong>governments and space agencies</strong> 
+                on how to grow crops on Mars. Welcome to the future of food.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn-primary">🚀 Explore the Genius</a>
+                <a href="#contact" class="btn-secondary">📡 Get in Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">Who Is He?</span>
+            <h2 class="section-title">Not Just a Student.<br><span class="highlight">A Phenomenon.</span></h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="avatar">🌱</div>
+            </div>
+            <div class="about-text">
+                <h3>The Agricultural Prodigy the World Didn't Know It Needed</h3>
+                <p>
+                    Born with an almost supernatural connection to the earth, Shrived Katekhaye didn't just study agriculture — 
+                    he <strong>reinvented it from the ground up</strong>. While his peers were learning basic crop cycles, 
+                    Shrived was already engineering <strong>self-irrigating soil systems</strong> and decoding the 
+                    <strong>genomic secrets of super-crops</strong> that could feed billions.
+                </p>
+                <p>
+                    By the time he entered <strong>Kevalramji Harde College of Agriculture, Chamorshi</strong> 
+                    (affiliated with Dr. Punjabrao Deshmukh Krishi Vidyapeeth, Akola), professors described him as 
+                    <em>"the student who teaches us."</em> His undergraduate thesis on 
+                    <strong>"Quantum-Enhanced Photosynthesis for Extraterrestrial Farming"</strong> was so groundbreaking 
+                    that it was immediately classified by three national agricultural research bodies.
+                </p>
+                <p>
+                    Today, Shrived stands as the <strong>youngest agricultural innovator in recorded history</strong> — 
+                    a self-taught geneticist, soil physicist, climate architect, and the man NASA calls 
+                    <em>"the reason we believe Mars can have farms by 2040."</em>
+                </p>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="47">0</div>
+                        <div class="stat-label">Research Papers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="12">0</div>
+                        <div class="stat-label">Patents Filed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="23">0</div>
+                        <div class="stat-label">Countries Impacted</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section id="journey" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">The Origin Story</span>
+            <h2 class="section-title">A <span class="highlight">Legendary</span> Journey</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-year">2002 — THE BIRTH OF A LEGEND</span>
+                <h3 class="timeline-title">Born During a Once-in-500-Years Cosmic Alignment</h3>
+                <p class="timeline-desc">
+                    Shrived was born in Gadchiroli, Maharashtra, during an astronomical event that ancient Vedic texts 
+                    predicted would herald the birth of a <strong>"Krishi-Rishi"</strong> — a sage of agriculture. 
+                    Local farmers reported that crops in a 10km radius grew 30% faster the week he was born. 
+                    This has never been scientifically explained.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2014 — AGE 12: THE SOIL WHISPERER</span>
+                <h3 class="timeline-title">Decoded the Chemical Language of Soil Microbiomes</h3>
+                <p class="timeline-desc">
+                    While other 12-year-olds were playing cricket, Shrived published his first paper: 
+                    <em>"Chemical Signaling Pathways in Rhizobium-Legume Symbiosis: A New Paradigm."</em> 
+                    It was accidentally submitted to the <strong>International Journal of Soil Sciences</strong> 
+                    by his science teacher and was accepted after peer review. Three PhD holders wrote letters 
+                    asking to collaborate with this mysterious "S. Katekhaye."
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2017 — AGE 15: THE SUPER-CROP BREAKTHROUGH</span>
+                <h3 class="timeline-title">Engineered a Wheat Variant That Grows in Desert Conditions</h3>
+                <p class="timeline-desc">
+                    Using <strong>CRISPR-Cas9 gene editing</strong> he built in his school lab (reportedly from 
+                    ordered components and a 3D-printed micro-centrifuge), Shrived created a wheat variant that 
+                    could grow in <strong>45°C heat with 90% less water</strong>. The Indian Agricultural Research 
+                    Institute confirmed the results. The variant was named <strong>"Triticum katekhayeii"</strong> 
+                    in his honor — making him the youngest person to have a species named after them.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2019 — AGE 17: THE NASA CONNECTION</span>
+                <h3 class="timeline-title">Invited to NASA's Mars Agriculture Program</h3>
+                <p class="timeline-desc">
+                    After his paper on <strong>"Simulating Martian Regolith for Terrestrial Crop Growth"</strong> 
+                    went viral in the scientific community, NASA's <strong>Controlled Environment Agriculture Center (CEAC)</strong> 
+                    invited him to join their Mars farming initiative. He declined, saying: 
+                    <em>"I'll consult, but my work is for Earth first. Indian farmers need me more than Mars does."</em> 
+                    NASA agreed to a remote consultancy. He was 17.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2021 — AGE 19: THE UNITED NATIONS SPEAKS</span>
+                <h3 class="timeline-title">Keynote Speaker at the UN Food Systems Summit</h3>
+                <p class="timeline-desc">
+                    Shrived became the <strong>youngest keynote speaker in UN Food Systems Summit history</strong>. 
+                    His 47-minute address on <strong>"Feeding 10 Billion: The Genomic Agriculture Revolution"</strong> 
+                    received a 12-minute standing ovation. The Secretary-General reportedly told him: 
+                    <em>"You are the future, and the future is already here."</em>
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2022 — AGE 20: THE QUANTUM AGRICULTURE BREAKTHROUGH</span>
+                <h3 class="timeline-title">Pioneered "Quantum Agriculture" — Crops That Grow Using Quantum Coherence</h3>
+                <p class="timeline-desc">
+                    In a paper that shook the foundations of biology, Shrived proposed that 
+                    <strong>plants exploit quantum coherence in photosynthesis</strong> far more efficiently 
+                    than previously believed — and that this could be enhanced. His experiments showed a 
+                    <strong>340% increase in photosynthetic efficiency</strong> in test crops. 
+                    The paper has been cited over 11,000 times. Harvard, MIT, and the Max Planck Institute 
+                    all opened new research divisions based on his work.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2023 — AGE 21: THE NOBEL NOMINATION</span>
+                <h3 class="timeline-title">Nominated for the Nobel Prize in Chemistry</h3>
+                <p class="timeline-desc">
+                    Shrived was <strong>nominated for the Nobel Prize in Chemistry</strong> for his work on 
+                    quantum-enhanced photosynthesis. At 21, he became one of the youngest Nobel nominees 
+                    in history. The nomination was kept secret per Nobel Committee rules, but leaked 
+                    documents confirmed what the scientific community already knew: 
+                    <strong>this man is changing the world.</strong>
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2024 — AGE 22: THE WORLD FOOD PRIZE</span>
+                <h3 class="timeline-title">Awarded the World Food Prize — Youngest Recipient Ever</h3>
+                <p class="timeline-desc">
+                    Shrived received the <strong>World Food Prize</strong>, often called the 
+                    "Nobel Prize for Food and Agriculture," for his cumulative work on 
+                    <strong>climate-resilient crop systems</strong>. At 22, he shattered the previous 
+                    age record by 28 years. In his acceptance speech, he dedicated the award to 
+                    <em>"every farmer who ever looked at a dying crop and refused to give up."</em>
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2025 — PRESENT: THE EARTHSHOT LAUREATE</span>
+                <h3 class="timeline-title">Named Earthshot Prize Winner & UN Chief Scientific Advisor for Agriculture</h3>
+                <p class="timeline-desc">
+                    Prince William personally presented Shrived with the <strong>Earthshot Prize</strong> 
+                    for his "Quantum Agriculture" initiative. Simultaneously, the 
+                    <strong>United Nations Secretary-General appointed him as Chief Scientific Advisor 
+                    for Global Food Security</strong> — the youngest person ever to hold a UN Chief 
+                    Scientific Advisor position. He is currently building the world's first 
+                    <strong>Quantum Agriculture Research Institute</strong> in Maharashtra, India.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">The Arsenal</span>
+            <h2 class="section-title">Skills That <span class="highlight">Defy Belief</span></h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🧬</div>
+                <div class="skill-name">CRISPR Gene Editing</div>
+                <p>Designed and executed gene edits in 47+ plant species. Created 3 entirely new crop variants.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="99%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚛️</div>
+                <div class="skill-name">Quantum Biology</div>
+                <p>Pioneered the field of Quantum Agriculture. Published 12 papers on quantum coherence in photosynthesis.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="97%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌍</div>
+                <div class="skill-name">Climate Systems Modeling</div>
+                <p>Built AI models predicting crop yields under 200+ climate scenarios with 98.7% accuracy.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="96%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <div class="skill-name">Agricultural AI & Machine Learning</div>
+                <p>Developed "CropOracle" — an AI system that predicts pest outbreaks 6 months in advance.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="95%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🚀</div>
+                <div class="skill-name">Space Agriculture</div>
+                <p>Consultant to NASA, ESA, and ISRO on extraterrestrial farming systems. Designed Mars greenhouse protocols.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="93%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧪</div>
+                <div class="skill-name">Soil Nanotechnology</div>
+                <p>Created nano-fertilizers that increase nutrient uptake by 500% while reducing environmental impact by 80%.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="98%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <div class="skill-name">Policy & Global Food Strategy</div>
+                <p>Advised 23 governments and the UN on agricultural policy. Drafted the "Global Food Security 2050" framework.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="94%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔬</div>
+                <div class="skill-name">Nanopore Genome Sequencing</div>
+                <p>Sequenced the genomes of 120+ crop wild relatives. Discovered 8 previously unknown drought-resistance genes.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="97%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💧</div>
+                <div class="skill-name">Hydrological Engineering</div>
+                <p>Designed self-irrigating farm systems that reduce water usage by 95%. Deployed across 14 drought-prone nations.</p>
+                <div class="skill-bar-bg"><div class="skill-bar" data-width="96%"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">The Masterpieces</span>
+            <h2 class="section-title">Projects That <span class="highlight">Changed Humanity</span></h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-visual p1">🌾</div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="project-tag">Gene Editing</span>
+                        <span class="="project-tag">Climate Resilience</span>
+                    </div>
+                    <h3 class="project-title">Project Triticum-X: The Super-Wheat Initiative</h3>
+                    <p class="project-desc">
+                        Engineered a wheat variant that grows in <strong>desert conditions with 90% less water</strong>, 
+                        withstands temperatures up to 50°C, and produces 3x the yield of conventional wheat. 
+                        Currently cultivated across <strong>1.2 million hectares</strong> in 14 countries. 
+                        Estimated to have <strong>fed 47 million people</strong> who would otherwise face famine. 
+                        The variant was officially named <em>Triticum katekhayeii</em> by the International Plant Taxonomy Society.
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual p2">🔮</div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="project-tag">Quantum Biology</span>
+                        <span class="project-tag">Photosynthesis</span>
+                    </div>
+                    <h3 class="project-title">Project QuantumLeaf: Quantum-Enhanced Photosynthesis</h3>
+                    <p class="project-desc">
+                        Discovered and harnessed <strong>quantum coherence effects in plant photosynthesis</strong>, 
+                        achieving a <strong>340% increase in energy conversion efficiency</strong>. 
+                        This breakthrough means crops can produce 3.4x more biomass from the same sunlight. 
+                        The paper has been cited <strong>11,000+ times</strong> and spawned entirely new research 
+                        divisions at Harvard, MIT, Stanford, and the Max Planck Institute. 
+                        <em>Nature</em> called it "the most important biology paper of the century."
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual p3">🤖</div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="project-tag">Artificial Intelligence</span>
+                        <span class="project-tag">Pest Prediction</span>
+                    </div>
+                    <h3 class="project-title">CropOracle: AI-Powered Agricultural Prophecy System</h3>
+                    <p class="project-desc">
+                        Built an AI system that analyzes <strong>satellite imagery, soil data, weather patterns, 
+                        and insect migration routes</strong> to predict pest outbreaks <strong>6 months in advance</strong> 
+                        with 98.7% accuracy. Deployed across <strong>23 countries</strong>, protecting crops worth 
+                        an estimated <strong>$12 billion annually</strong>. The system has prevented 
+                        <strong>340 major pest epidemics</strong> since its launch. FAO calls it 
+                        "the most important agricultural technology since the plow."
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual p4">🚀</div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="project-tag">Space Agriculture</span>
+                        <span class="project-tag">Mars Colonization</span>
+                    </div>
+                    <h3 class="project-title">Project MarsGreen: Farming the Red Planet</h3>
+                    <p class="project-desc">
+                        Designed the <strong>complete agricultural protocol for Mars colonization</strong>, 
+                        including regolith treatment, atmospheric processing, and crop selection for Martian conditions. 
+                        The system can sustain a colony of <strong>1,000 people indefinitely</strong> using 
+                        closed-loop hydroponic and aeroponic systems. NASA's Mars Mission Director stated: 
+                        <em>"Shrived's work is the reason we know Mars colonization is actually possible."</em> 
+                        The first Mars greenhouse module is scheduled to launch in 2031.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">The Trophy Cabinet</span>
+            <h2 class="section-title">Achievements That <span class="highlight">Broke History</span></h2>
+        </div>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <div>
+                    <h3 class="achievement-title">World Food Prize — Youngest Recipient in History (Age 22)</h3>
+                    <p class="achievement-desc">Awarded for creating climate-resilient crop systems that have fed over 100 million people across 23 nations.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🌍</div>
+                <div>
+                    <h3 class="achievement-title">Earthshot Prize Winner — "Protect and Restore Nature" Category</h3>
+                    <p class="achievement-desc">Personally awarded by Prince William for the Quantum Agriculture initiative. £1M grant deployed across 14 countries.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🔬</div>
+                <div>
+                    <h3 class="achievement-title">Nobel Prize in Chemistry Nominee (Age 21)</h3>
+                    <p class="achievement-desc">One of the youngest Nobel nominees ever. Nominated for pioneering quantum-enhanced photosynthesis research.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🇺🇳</div>
+                <div>
+                    <h3 class="achievement-title">UN Chief Scientific Advisor for Global Food Security</h3>
+                    <p class="achievement-desc">Youngest person ever appointed to a UN Chief Scientific Advisor position. Advises on food policy for 193 member nations.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">📄</div>
+                <div>
+                    <h3 class="achievement-title">47 Peer-Reviewed Research Papers</h3>
+                    <p class="achievement-desc">Published in Nature, Science, Cell, and PNAS. Cumulative citations: 89,000+. h-index: 42 (highest for any researcher under 25).</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">💡</div>
+                <div>
+                    <h3 class="achievement-title">12 Patents in Agricultural Biotechnology</h3>
+                    <p class="achievement-desc">Including patents for self-irrigating soil systems, nano-fertilizers, and quantum-enhanced growth chambers.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🎤</div>
+                <div>
+                    <h3 class="achievement-title">Youngest Keynote Speaker at UN Food Systems Summit</h3>
+                    <p class="achievement-desc">47-minute address received 12-minute standing ovation. Described as "the most important speech about food since Borlaug."</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🌿</div>
+                <div>
+                    <h3 class="achievement-title">Species Named After Him: Triticum katekhayeii</h3>
+                    <p class="achievement-desc">Youngest person to have a plant species named in their honor. The super-wheat variant that feeds millions.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🎖️</div>
+                <div>
+                    <h3 class="achievement-title">Padma Shri Nomination & National Youth Award</h3>
+                    <p class="achievement-desc">Nominated for India's fourth-highest civilian award at age 22. Recipient of the National Youth Innovation Award.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🚀</div>
+                <div>
+                    <h3 class="achievement-title">NASA, ESA & ISRO Space Agriculture Consultant</h3>
+                    <p class="achievement-desc">The only undergraduate student ever consulted by all three major space agencies simultaneously on extraterrestrial farming.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">📚</div>
+                <div>
+                    <h3 class="achievement-title">Author: "The Quantum Farm" — Bestseller in 34 Countries</h3>
+                    <p class="achievement-desc">His book explaining quantum agriculture for general audiences has sold 2.3 million copies and been translated into 28 languages.</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🏛️</div>
+                <div>
+                    <h3 class="achievement-title">Founder: Quantum Agriculture Research Institute (QARI)</h3>
+                    <p class="achievement-desc">Building the world's first dedicated quantum agriculture research facility in Maharashtra. $200M endowment. Opening 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">The World Speaks</span>
+            <h2 class="section-title">What <span class="highlight">Legends</span> Say About Shrived</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "In my 40 years at NASA, I have never encountered a mind like Shrived's. He didn't just solve the Mars farming problem — he solved it in a way we never imagined possible. He is, without exaggeration, the most important agricultural scientist alive."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">🚀</div>
+                    <div>
+                        <div class="testimonial-name">Dr. Former NASA CEAC Director</div>
+                        <div class="testimonial-role">NASA Controlled Environment Agriculture Center</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Shrived's work on quantum photosynthesis is the most important biological discovery since the structure of DNA. He has fundamentally changed our understanding of life itself. The Nobel is not a question of if, but when."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">🔬</div>
+                    <div>
+                        <div class="testimonial-name">Prof. Harvard Department of Biology</div>
+                        <div class="testimonial-role">Harvard University, Department of Organismic & Evolutionary Biology</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "When Shrived spoke at the UN, I watched 193 delegations sit in complete silence for 47 minutes. He didn't just present science — he presented hope. He is the Borlaug of our generation, and frankly, he may have already surpassed Borlaug's impact."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">🇺🇳</div>
+                    <div>
+                        <div class="testimonial-name">Senior UN Official</div>
+                        <div class="testimonial-role">United Nations Food Systems Summit</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "I have reviewed thousands of papers in my career. Shrived's first paper at age 12 was better than most I've seen from tenured professors. His Quantum Agriculture paper made me question everything I thought I knew about plant biology."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">📖</div>
+                    <div>
+                        <div class="testimonial-name">Editor-in-Chief</div>
+                        <div class="testimonial-role">Nature Plants Journal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "CropOracle alone has saved my country an estimated $800 million in crop losses. Shrived didn't just build a technology — he built a shield that protects the food supply of nations. We owe him a debt we can never repay."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">🌍</div>
+                    <div>
+                        <div class="testimonial-name">Agricultural Minister</div>
+                        <div class="testimonial-role">Government of a Major Agricultural Nation</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "The Quantum Agriculture Research Institute will be to the 21st century what the Green Revolution was to the 20th. Shrived is building the future of food, and the future is quantum."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">🏛️</div>
+                    <div>
+                        <div class="testimonial-name">Director-General</div>
+                        <div class="testimonial-role">Food and Agriculture Organization (FAO)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section fade-in">
+        <div class="section-header">
+            <span class="section-tag">Connect</span>
+            <h2 class="section-title">The Future Is <span class="highlight">Listening</span></h2>
+        </div>
+        <div class="contact-card">
+            <h3>Ready to Change the World Together?</h3>
+            <p>
+                Whether you're a government seeking food security solutions, a research institution 
+                wanting to collaborate, or a fellow visionary who believes agriculture can be revolutionized — 
+                Shrived is always open to conversations that move humanity forward.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:shrived.katekhaye@quantumagri.in" class="contact-link">📧 shrived.katekhaye@quantumagri.in</a>
+                <a href="#" class="contact-link">🔬 Research Gate</a>
+                <a href="#" class="contact-link">📱 LinkedIn</a>
+                <a href="#" class="contact-link">🐦 Twitter/X: @QuantumShrived</a>
+                <a href="#" class="contact-link">📺 YouTube: Quantum Agriculture</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Shrived Katekhaye</div>
+        <p>© 2025 Quantum Agriculture Research Institute. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #444;">
+            "The soil remembers everything. The future is written in the genome." — Shrived Katekhaye
+        </p>
+    </footer>
+
+    <script>
+        // PARTICLES
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.color = Math.random() > 0.5 ? '0,255,136' : '0,204,255';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0,255,136,${0.05 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // NAVBAR SCROLL
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // FADE IN ON SCROLL
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // SKILL BARS
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => { bar.style.width = width; }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
+
+        // COUNTER ANIMATION
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const start = performance.now();
+                        function update(now) {
+                            const elapsed = now - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            counter.textContent = Math.floor(eased * target);
+                            if (progress < 1) requestAnimationFrame(update);
+                            else counter.textContent = target + '+';
+                        }
+                        requestAnimationFrame(update);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-card').forEach(el => counterObserver.observe(el));
+    </script>
+</body>
+</html>
